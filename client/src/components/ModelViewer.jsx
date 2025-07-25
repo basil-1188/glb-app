@@ -15,7 +15,7 @@ const ModelViewer = () => {
   useEffect(() => {
     const fetchModel = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/models/${id}`);
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/models/${id}`);
         initThreeJS(response.data.url);
       } catch (err) {
         setError('Failed to load model');
