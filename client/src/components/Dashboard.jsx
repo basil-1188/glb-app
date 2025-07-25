@@ -15,7 +15,7 @@ const Dashboard = () => {
 
   const fetchModels = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/models');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/models`);
       setModels(response.data);
     } catch (error) {
       console.error('Error fetching models:', error);
