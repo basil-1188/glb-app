@@ -26,20 +26,16 @@ const ModelViewer = () => {
     const initThreeJS = (modelUrl) => {
       if (!containerRef.current) return;
 
-      // Setup scene
       const scene = new THREE.Scene();
       scene.background = new THREE.Color(0xffffff);
       
-      // Setup camera
       const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
       camera.position.z = 5;
 
-      // Setup renderer
       const renderer = new THREE.WebGLRenderer({ antialias: true });
       renderer.setSize(window.innerWidth, window.innerHeight);
       containerRef.current.appendChild(renderer.domElement);
 
-      // Add lights
       const ambientLight = new THREE.AmbientLight(0x404040);
       scene.add(ambientLight);
       
@@ -47,11 +43,9 @@ const ModelViewer = () => {
       directionalLight.position.set(1, 1, 1);
       scene.add(directionalLight);
 
-      // Add controls
       const controls = new OrbitControls(camera, renderer.domElement);
       controls.enableDamping = true;
 
-      // Load model
       const loader = new GLTFLoader();
       loader.load(
         modelUrl,
@@ -67,7 +61,6 @@ const ModelViewer = () => {
         }
       );
 
-      // Animation loop
       const animate = () => {
         requestAnimationFrame(animate);
         controls.update();
@@ -75,7 +68,6 @@ const ModelViewer = () => {
       };
       animate();
 
-      // Handle resize
       const handleResize = () => {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
@@ -83,7 +75,6 @@ const ModelViewer = () => {
       };
       window.addEventListener('resize', handleResize);
 
-      // Cleanup
       return () => {
         window.removeEventListener('resize', handleResize);
         containerRef.current?.removeChild(renderer.domElement);
