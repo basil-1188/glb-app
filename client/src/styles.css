@@ -1,4 +1,3 @@
-/* Dashboard Styles */
 .dashboard {
   max-width: 800px;
   margin: 2rem auto;
@@ -83,7 +82,6 @@
   transform: translateY(-2px);
 }
 
-/* Model Viewer Styles */
 .model-viewer {
   position: relative;
   width: 100vw;
@@ -115,7 +113,6 @@
   height: 100%;
 }
 
-/* Loading Styles */
 .loading-overlay {
   position: absolute;
   top: 0;
